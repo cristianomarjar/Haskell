@@ -1,7 +1,7 @@
-import Control.Monad
-import Data.Char
+import System.IO
 
-main = forever $ do
-    putStr "Give me some input: "
-    l <- getLine
-    putStrLn $ map toUpper l
+main = do
+    handle <- openFile "lorem.txt" ReadMode
+    contents <- hGetContents handle
+    putStrLn contents
+    hClose handle
